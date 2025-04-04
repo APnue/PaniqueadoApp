@@ -1,0 +1,74 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item routerLink="/home">Inicio</ion-item>
+      <ion-item routerLink="/productos">Productos</ion-item>
+      <ion-item routerLink="/contacto">Contacto</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Paniqueado</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- Banner Principal -->
+    <div class="banner">
+      <img src="assets/img/Imagen1.png" alt="Cupcakes de Piña">
+      <div class="banner-text">
+        <h2>Paniqueado</h2>
+        <p>Cupcakes de piña por tiempo limitado</p>
+        <ion-button color="danger">COMPRAR</ion-button>
+      </div>
+    </div>
+
+    <!-- Sección de Productos -->
+    <div class="productos">
+      <h3>SIMPLE. CLÁSICO. DELICIOSO</h3>
+      <div class="productos-grid">
+        <ion-card>
+          <img src="assets/img/Imagen2.png" alt="Cakes">
+          <ion-button color="danger">CAKES</ion-button>
+        </ion-card>
+        <ion-card>
+          <img src="" alt="Cupcakes">
+          <ion-button color="danger">CUPCAKES</ion-button>
+        </ion-card>
+        <ion-card>
+          <img src="" alt="Cookies">
+          <ion-button color="danger">COOKIES</ion-button>
+        </ion-card>
+      </div>
+    </div>
+    
+    <!-- Información adicional -->
+    <div class="info">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="paper-plane"></ion-icon>
+            <p>Envíos a todo el País</p>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="car"></ion-icon>
+            <p>Entrega local</p>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="storefront"></ion-icon>
+            <p>Tienda</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>

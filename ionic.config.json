@@ -1,0 +1,7 @@
+{
+  "name": "ManiqueadoApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
