@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/folder/inbox"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="!productoSeleccionado">
+    <ion-item *ngFor="let p of productos" (click)="seleccionarProducto(p)">
+      {{ p.nombre }} - ${{ p.precio }}
+      <ion-button slot="end" color="danger" (click)="eliminarProducto(p.id, $event)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="productoSeleccionado">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" [(ngModel)]="precio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">ID Categoría</ion-label>
+      <ion-input type="number" [(ngModel)]="id_categoria"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="actualizarProducto()">Guardar cambios</ion-button>
+    <ion-button expand="full" color="medium" (click)="productoSeleccionado = null">Cancelar</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/folder/inbox"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Fecha y hora actual</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>{{ fechaActual | date: 'dd/MM/yyyy - HH:mm:ss' }}</p>
+  </ion-card-content>
+</ion-card>
+
+<ion-content>
+  <form (ngSubmit)="guardarUsuario()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input type="email" [(ngModel)]="usuario.correo" name="correo" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input type="tel" [(ngModel)]="usuario.telefono" name="telefono"></ion-input>
+    </ion-item>
+
+    <ion-item>
+  <ion-label>Recibir notificaciones</ion-label>
+  <ion-checkbox
+    [(ngModel)]="usuario.recibir_notificaciones"
+    name="recibir_notificaciones"
+    color="primary"
+  ></ion-checkbox>
+</ion-item>
+
+    <ion-button expand="block" type="submit" style="margin: 20px 0;">
+      Guardar
+    </ion-button>
+  </form>
+
+  <!-- Botón de eliminar dentro del ion-content -->
+  <ion-button color="danger" expand="block" (click)="eliminarUsuario()">
+    Eliminar Cuenta
+  </ion-button>
+</ion-content>
