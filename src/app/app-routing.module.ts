@@ -5,16 +5,12 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
-  },
-  {
-    path: 'loading',
-    loadChildren: () => import('./loading/loading.module').then(m => m.LoadingPageModule)
   },
   {
     path: 'catalogo',
@@ -51,6 +47,10 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
   },
 ];
 

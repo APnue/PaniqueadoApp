@@ -89,3 +89,44 @@ ion-menu-button {
   margin: 10px 0; /* Espacio alrededor de la línea, ajusta según lo necesites */
   margin-left: 1%;
 }
+
+.banner,
+.productos {
+  position: relative;
+}
+
+.banner-button {
+  position: absolute;
+  bottom: 13px; 
+  left: 77%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  width: 33%;
+}
+
+.productos-button {
+  position: absolute;
+  bottom: 10px; 
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  width: 105%;
+}
+
+.banner-button ion-button,
+.productos-button ion-button {
+  width: 200px; // ajusta según desees
+  --background: #f7374f;
+  --background-focused: #e65b50;
+  --background-hover: #ff8578;
+}
+
+/* RESPONSIVE: Botón más pequeño en móviles */
+@media (max-width: 480px) {
+  .banner-button ion-button,
+  .productos-button ion-button {
+    width: 90%;
+  }
+}
