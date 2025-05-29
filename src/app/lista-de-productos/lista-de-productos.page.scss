@@ -1,0 +1,86 @@
+/* Fondo general */
+ion-content {
+  --background: #FFF4F8;
+  color: #3A3647;
+  font-weight: 500;
+  padding: 16px;
+}
+
+/* Título de secciones */
+ion-text h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 16px 0 8px;
+  color: #6B5E7A;
+}
+
+/* Tarjetas de categoría */
+ion-card {
+  background: #D2E3FC; /* azul pastel suave */
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(118, 147, 190, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+ion-card:hover {
+  transform: scale(1.02);
+}
+
+ion-card-title {
+  color: #354052;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Lista de productos */
+ion-list {
+  background: transparent;
+  margin-top: 12px;
+}
+
+ion-item {
+  --background: #F3E7FF; /* lavanda pastel */
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(173, 136, 207, 0.15);
+  --padding-start: 16px;
+}
+
+ion-label h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3D3753;
+  margin: 0;
+}
+
+ion-label p {
+  font-size: 14px;
+  color: #615978;
+  margin: 4px 0 0;
+}
+
+/* Botón "Agregar al carrito" */
+ion-button[color="success"] {
+  --background: #C9F5D8; /* verde pastel */
+  --background-activated: #A4EBBF;
+  --color: #145C3F;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* Texto cuando no hay productos */
+ion-text p {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Centrado en pantallas grandes */
+@media (min-width: 600px) {
+  ion-content {
+    max-width: 700px;
+    margin: auto;
+  }
+}

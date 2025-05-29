@@ -1,119 +1,97 @@
-ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+/* Fondo general del menú y contenido */
+.pastel-menu ion-content {
+  --background: #FFE0E9; /* rosa pastel */
 }
 
-ion-menu.md ion-content {
-  --padding-start: 8px;
-  --padding-end: 8px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
+/* Lista principal */
+.pastel-menu ion-list#inbox-list {
+  border-bottom: 1px solid #D8CFE3; /* línea lavanda suave */
+  background: transparent;
 }
 
-ion-menu.md ion-list {
-  padding: 20px 0;
-}
-
-ion-menu.md ion-note {
-  margin-bottom: 30px;
-}
-
-ion-menu.md ion-list-header,
-ion-menu.md ion-note {
-  padding-left: 10px;
-}
-
-ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-background-color-step-150, #d7d8da);
-}
-
-ion-menu.md ion-list#inbox-list ion-list-header {
+/* Header de la lista */
+.pastel-menu ion-list#inbox-list ion-list-header {
   font-size: 22px;
   font-weight: 600;
-
   min-height: 20px;
+  color: #BFA2DB; /* lavanda */
+  background: transparent;
 }
 
-ion-menu.md ion-list#labels-list ion-list-header {
-  font-size: 16px;
-
-  margin-bottom: 18px;
-
-  color: #757575;
-
-  min-height: 26px;
+/* Items del menú */
+.pastel-menu ion-item {
+  --background: transparent !important; /* quitar fondo negro */
+  --color: #4B4453; /* gris oscuro suave */
+  border-radius: 8px;
+  margin-bottom: 4px;
+  --ripple-color: #C7F2FF; /* efecto clic pastel */
 }
 
-ion-menu.md ion-item {
-  --padding-start: 10px;
-  --padding-end: 10px;
-  border-radius: 4px;
+/* Item seleccionado */
+.pastel-menu ion-item.selected {
+  --background: #AEECEF !important; /* celeste pastel */
+  --color: #4B4453;
 }
 
-ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+/* Iconos */
+.pastel-menu ion-item ion-icon {
+  color: #6A5D7B; /* lavanda */
 }
 
-ion-menu.md ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+/* Iconos en item seleccionado */
+.pastel-menu ion-item.selected ion-icon {
+  color: #4B4453;
 }
 
-ion-menu.md ion-item ion-icon {
-  color: #616e7e;
-}
-
-ion-menu.md ion-item ion-label {
+/* Etiquetas de texto */
+.pastel-menu ion-item ion-label {
   font-weight: 500;
+  background: transparent;
 }
 
-ion-menu.ios ion-content {
-  --padding-bottom: 20px;
+/* iOS específico */
+.pastel-menu.ios ion-content {
+  --background: #FFE0E9;
 }
 
-ion-menu.ios ion-list {
-  padding: 20px 0 0 0;
+.pastel-menu.ios ion-item {
+  --background: transparent !important;
+  --color: #4B4453;
+  border-radius: 8px;
+  margin-bottom: 4px;
 }
 
-ion-menu.ios ion-note {
-  line-height: 24px;
-  margin-bottom: 20px;
+.pastel-menu.ios ion-item.selected {
+  --background: #AEECEF !important;
+  --color: #4B4453;
 }
 
-ion-menu.ios ion-item {
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --min-height: 50px;
+.pastel-menu.ios ion-item ion-icon {
+  color: #6A5D7B;
 }
 
-ion-menu.ios ion-item.selected ion-icon {
-  color: var(--ion-color-primary);
+.pastel-menu.ios ion-item.selected ion-icon {
+  color: #4B4453;
 }
 
-ion-menu.ios ion-item ion-icon {
-  font-size: 24px;
-  color: #73849a;
+.pastel-menu ion-item,
+.pastel-menu ion-item ion-label {
+  --color: #2C2A35; /* gris oscuro, casi negro */
+  font-weight: 600; /* un poco más negrita para mejor legibilidad */
 }
 
-ion-menu.ios ion-list#labels-list ion-list-header {
-  margin-bottom: 8px;
+.pastel-menu ion-list#inbox-list ion-list-header {
+  color: #3C3A4B; /* oscuro para el header */
+  font-weight: 700;
 }
 
-ion-menu.ios ion-list-header,
-ion-menu.ios ion-note {
-  padding-left: 16px;
-  padding-right: 16px;
+.pastel-menu ion-item.selected,
+.pastel-menu ion-item.selected ion-label {
+  --color: #1A1A25; /* aún más oscuro para el texto activo */
+  font-weight: 700;
 }
 
-ion-menu.ios ion-note {
-  margin-bottom: 8px;
-}
-
-ion-note {
-  display: inline-block;
-  font-size: 16px;
-
-  color: var(--ion-color-medium-shade);
-}
-
-ion-item.selected {
-  --color: var(--ion-color-primary);
+.pastel-menu ion-item ion-icon,
+.pastel-menu ion-item.selected ion-icon {
+  color: #4A4960; /* gris oscuro para iconos */
 }

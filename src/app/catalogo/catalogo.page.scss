@@ -1,0 +1,65 @@
+/* Fondo general de la página */
+ion-content {
+  --background: #FFF4F8; /* rosa pastel muy suave */
+  color: #4B4453; /* texto gris oscuro suave */
+}
+
+/* Cards */
+ion-card {
+  background: #FAF0FC; /* lavanda pastel */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(181, 151, 211, 0.15);
+  margin-bottom: 16px;
+  color: #4B4453;
+}
+
+/* Título de card */
+ion-card-header ion-card-title {
+  font-weight: 700;
+  color: #7A5CA1; /* lavanda oscuro */
+  font-size: 1.2rem;
+}
+
+/* Texto dentro de ion-card-content */
+ion-card-content p {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #6E5C83; /* lavanda grisáceo */
+}
+
+/* Botón eliminar producto */
+ion-button[color="danger"] {
+  --background: #F7A9A8; /* rosa pastel suave */
+  --background-activated: #F15E5E;
+  --color: #622626; /* rojo oscuro para texto */
+  --border-radius: 10px;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Botón hacer pedido */
+ion-button[color="success"] {
+  --background: #AEECEF; /* celeste pastel */
+  --background-activated: #5ED8E6;
+  --color: #0D4A4A; /* azul verdoso oscuro */
+  --border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Mensaje carrito vacío */
+ion-text p {
+  font-size: 1rem;
+  color: #8E7AA9; /* lavanda grisáceo */
+  text-align: center;
+  margin-top: 24px;
+  font-style: italic;
+}
+
+/* Responsive para tarjetas y botones */
+@media (min-width: 600px) {
+  ion-card {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

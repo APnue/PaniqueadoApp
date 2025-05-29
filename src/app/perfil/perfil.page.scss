@@ -1,0 +1,86 @@
+/* Fondo general y padding para el contenido */
+ion-content {
+  --background: #f9f6f3; /* un tono claro y cálido */
+  padding: 16px;
+  color: #4a3a3a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilo para el card con fecha y hora */
+ion-card {
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(62, 48, 83, 0.15);
+  margin-bottom: 20px;
+  background: #fff;
+  color: #3e3053;
+}
+
+ion-card-header {
+  background: #6f52ed;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+ion-card-content {
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Formulario */
+form ion-item {
+  --background: #fff;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 5px rgba(62, 48, 83, 0.1);
+}
+
+/* Labels flotantes con color personalizado */
+ion-label {
+  color: #6f52ed;
+  font-weight: 600;
+}
+
+/* Inputs con borde redondeado */
+ion-input {
+  --padding-start: 12px;
+  --background: #fafafa;
+  border-radius: 10px;
+  border: 1px solid #dcd9f7;
+}
+
+/* Checkbox personalizado */
+ion-checkbox {
+  --background: #6f52ed;
+  --border-radius: 6px;
+}
+
+/* Botón Guardar */
+ion-button[type="submit"] {
+  --background: #6f52ed;
+  --box-shadow: 0 4px 14px rgba(111, 82, 237, 0.5);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* Botón Eliminar */
+ion-button[color="danger"] {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 17px;
+  --background: #e74c3c;
+  --box-shadow: 0 4px 14px rgba(231, 76, 60, 0.5);
+  border-radius: 12px;
+}
+
+/* Responsive: más espacio en pantallas grandes */
+@media (min-width: 600px) {
+  ion-content {
+    max-width: 600px;
+    margin: auto;
+  }
+}

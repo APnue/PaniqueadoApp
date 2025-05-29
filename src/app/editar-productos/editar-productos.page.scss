@@ -1,0 +1,71 @@
+/* Fondo general rosa pastel */
+ion-content {
+  --background: #FFF4F8;
+  color: #3E3A4D;
+  font-weight: 500;
+  padding: 16px;
+}
+
+/* Estilo para la lista de productos */
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: #EADCF5; /* lavanda pastel */
+  border-radius: 10px;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  --border-color: #D2BCE6;
+  box-shadow: 0 2px 6px rgba(181, 151, 211, 0.15);
+  font-weight: 600;
+}
+
+/* Botón de eliminar */
+ion-item ion-button[color="danger"] {
+  --background: #FFB4B4;
+  --color: #6B1E1E;
+  --background-activated: #FF8C8C;
+  --border-radius: 6px;
+}
+
+/* Etiquetas flotantes */
+ion-label {
+  color: #5A4E6B;
+  font-weight: 600;
+}
+
+/* Entradas */
+ion-input {
+  --color: #2D2B3A;
+  font-weight: 600;
+}
+
+/* Botón de guardar */
+ion-button {
+  --border-radius: 10px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+/* Botón guardar cambios */
+ion-button:first-of-type {
+  --background: #AEECEF;
+  --background-activated: #5ED8E6;
+  --color: #0D4A4A;
+  box-shadow: 0 4px 10px rgba(94, 216, 230, 0.25);
+}
+
+/* Botón cancelar */
+ion-button[color="medium"] {
+  --background: #D8CFE3;
+  --color: #3E3A4D;
+}
+
+/* Centrado en pantallas grandes */
+@media (min-width: 600px) {
+  ion-content {
+    max-width: 600px;
+    margin: auto;
+  }
+}

@@ -8,13 +8,6 @@
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item routerLink="/home">Inicio</ion-item>
-      <ion-item routerLink="/productos">Productos</ion-item>
-      <ion-item routerLink="/contacto">Contacto</ion-item>
-    </ion-list>
-  </ion-content>
 </ion-menu>
 
 <!-- Barra de Navegación Principal -->
@@ -31,9 +24,17 @@
 
 <!-- Contenido Principal -->
 <ion-content id="main-content">
-  <!-- Banner Principal -->
-  <div class="banner">
-    <img src="assets/img/Imagen1.png" alt="Cupcakes de Piña" class="banner-img">
+
+  <!-- Banner Principal con botones posicionados -->
+  <div class="banner" style="position: relative;">
+    <img src="assets/img/Imagen1.png" alt="Cupcakes de Piña" class="banner-img" />
+    <ion-button
+      routerLink="/lista-de-productos"
+      fill="solid"
+        style="position: absolute; top: 55%; right: 26px; width: 130px; --background: #f7374f; --background-focused: #e65b50; --background-hover: #ff8578;"
+    >
+      COMPRAR
+    </ion-button>
   </div>
 
   <!-- Slogan -->
@@ -42,16 +43,22 @@
   </div>
 
   <!-- Sección de Productos -->
-  <div class="productos">
-    <img src="assets/img/Imagen2.png" alt="Cakes" class="productos-img">
+  <div class="productos" styel="position: relative;">
+    <img src="assets/img/Imagen2.png" alt="Cakes" class="productos-img" />
+    <ion-button
+      routerLink="/lista-de-productos"
+      fill="solid"
+        style="position: absolute; top: 49%; right: 9px; width: 405px; --background: #f7374f; --background-focused: #e65b50; --background-hover: #ff8578;"
+    >
+      VER PRODUCTOS
+    </ion-button>
   </div>
 
   <div class="divider"></div>
   <div class="divider"></div>
-  
+
   <!-- Información adicional -->
   <div class="info">
-    <img src="assets/img/Imagen3.png" alt="Cakes" class="info-img">
+    <img src="assets/img/Imagen3.png" alt="Cakes" class="info-img" />
   </div>
 </ion-content>
-

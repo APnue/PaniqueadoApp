@@ -7,47 +7,170 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Fecha y hora actual</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <p>{{ fechaActual | date: 'dd/MM/yyyy - HH:mm:ss' }}</p>
-  </ion-card-content>
-</ion-card>
+<!-- LOGIN -->
+<ion-content class="perfil-contenido" *ngIf="estado === 'login'">
+  <form (ngSubmit)="iniciarSesion()">
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="loginCorreo"
+        name="loginCorreo"
+        placeholder="ejemplo@correo.com"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Introduce tu correo para iniciar sesión.
+    </ion-text>
+    <ion-button expand="block" type="submit" style="margin: 20px 0;">
+      Iniciar Sesión
+    </ion-button>
+  </form>
+  <p style="text-align:center;">
+    ¿No tienes una cuenta?
+    <a (click)="cambiarEstado('registro')">Crea una aquí</a>
+  </p>
+</ion-content>
 
-<ion-content>
+<!-- REGISTRO -->
+<ion-content class="perfil-contenido" *ngIf="estado === 'registro'">
   <form (ngSubmit)="guardarUsuario()">
     <ion-item>
-      <ion-label position="floating">Nombre</ion-label>
-      <ion-input [(ngModel)]="usuario.nombre" name="nombre" required></ion-input>
+      <ion-label position="floating">Nombre completo</ion-label>
+      <ion-input
+        [(ngModel)]="usuario.nombre"
+        name="nombre"
+        placeholder="Tu nombre completo"
+        required
+      ></ion-input>
     </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Escribe tu nombre y apellido.
+    </ion-text>
 
     <ion-item>
-      <ion-label position="floating">Correo</ion-label>
-      <ion-input type="email" [(ngModel)]="usuario.correo" name="correo" required></ion-input>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="usuario.correo"
+        name="correo"
+        placeholder="ejemplo@correo.com"
+        required
+      ></ion-input>
     </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Usaremos este correo para iniciar sesión.
+    </ion-text>
 
     <ion-item>
       <ion-label position="floating">Teléfono</ion-label>
-      <ion-input type="tel" [(ngModel)]="usuario.telefono" name="telefono"></ion-input>
+      <ion-input
+        type="tel"
+        [(ngModel)]="usuario.telefono"
+        name="telefono"
+        placeholder="10 dígitos, opcional"
+      ></ion-input>
     </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Número de contacto (opcional).
+    </ion-text>
 
     <ion-item>
-  <ion-label>Recibir notificaciones</ion-label>
-  <ion-checkbox
-    [(ngModel)]="usuario.recibir_notificaciones"
-    name="recibir_notificaciones"
-    color="primary"
-  ></ion-checkbox>
-</ion-item>
+      <ion-label>Recibir notificaciones</ion-label>
+      <ion-checkbox
+        [(ngModel)]="usuario.recibir_notificaciones"
+        name="recibir_notificaciones"
+        color="primary"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Activa si quieres recibir novedades y ofertas.
+    </ion-text>
 
     <ion-button expand="block" type="submit" style="margin: 20px 0;">
-      Guardar
+      Crear Cuenta
+    </ion-button>
+  </form>
+  <p style="text-align:center;">
+    ¿Ya tienes una cuenta?
+    <a (click)="cambiarEstado('login')">Inicia sesión aquí</a>
+  </p>
+</ion-content>
+
+<!-- PERFIL -->
+<ion-content class="perfil-contenido" *ngIf="estado === 'perfil'">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Fecha y hora actual</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ fechaActual | date: 'dd/MM/yyyy - HH:mm:ss' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <form (ngSubmit)="guardarUsuario()">
+    <ion-item>
+      <ion-label position="floating">Nombre completo</ion-label>
+      <ion-input
+        [(ngModel)]="usuario.nombre"
+        name="nombre"
+        placeholder="Tu nombre completo"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Edita tu nombre si es necesario.
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input
+        type="email"
+        [(ngModel)]="usuario.correo"
+        name="correo"
+        placeholder="ejemplo@correo.com"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Actualiza tu correo si cambió.
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input
+        type="tel"
+        [(ngModel)]="usuario.telefono"
+        name="telefono"
+        placeholder="10 dígitos, opcional"
+      ></ion-input>
+    </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      Tu número de contacto.
+    </ion-text>
+
+    <ion-item>
+      <ion-label>Recibir notificaciones</ion-label>
+      <ion-checkbox
+        [(ngModel)]="usuario.recibir_notificaciones"
+        name="recibir_notificaciones"
+        color="primary"
+      ></ion-checkbox>
+    </ion-item>
+    <ion-text color="medium" class="ion-padding-start">
+      ¿Quieres recibir novedades y ofertas?
+    </ion-text>
+
+    <ion-button expand="block" type="submit" style="margin: 20px 0;">
+      Guardar Cambios
     </ion-button>
   </form>
 
-  <!-- Botón de eliminar dentro del ion-content -->
+  <ion-button color="medium" expand="block" (click)="cerrarSesion()">
+    Cerrar Sesión
+  </ion-button>
+
   <ion-button color="danger" expand="block" (click)="eliminarUsuario()">
     Eliminar Cuenta
   </ion-button>

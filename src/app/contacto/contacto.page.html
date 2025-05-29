@@ -6,3 +6,44 @@
     <ion-title>Contacto</ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content class="ion-padding contacto-contenido">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Escríbenos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="enviarMensaje()" #contactForm="ngForm">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" name="nombre" [(ngModel)]="mensaje.nombre" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo Electrónico</ion-label>
+          <ion-input type="email" name="correo" [(ngModel)]="mensaje.correo" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Mensaje</ion-label>
+          <ion-textarea name="mensaje" [(ngModel)]="mensaje.texto" required></ion-textarea>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" [disabled]="!contactForm.form.valid" style="margin-top: 20px;">
+          Enviar
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información de Contacto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Teléfono:</strong> +52 55 1234 5678</p>
+      <p><strong>Email:</strong> soporte&#64;panaderiaapp.com</p>
+      <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,47 @@
+/* Fondo general */
+ion-content {
+  --background: #FFF6F0; /* durazno pastel */
+  color: #4A3A3A;
+  font-weight: 500;
+  padding: 16px;
+}
+
+/* Estilo general de los ítems */
+ion-item {
+  --background: #E9DCFF; /* lila pastel */
+  border-radius: 14px;
+  margin-bottom: 14px;
+  box-shadow: 0 3px 8px rgba(152, 134, 187, 0.2);
+  --padding-start: 16px;
+}
+
+/* Texto del pedido */
+ion-label h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3E3053;
+  margin: 0 0 6px;
+}
+
+ion-label p {
+  font-size: 14px;
+  color: #5D4A6E;
+  margin: 2px 0;
+}
+
+/* Texto cuando no hay pedidos */
+ion-text p {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  font-size: 16px;
+  margin-top: 24px;
+}
+
+/* Centrado en pantallas grandes */
+@media (min-width: 600px) {
+  ion-content {
+    max-width: 700px;
+    margin: auto;
+  }
+}

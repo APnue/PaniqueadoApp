@@ -1,0 +1,47 @@
+/* Fondo general pastel suave */
+ion-content {
+  --background: #FFF4F8; /* rosa pastel */
+  color: #3E3A4D; /* gris oscuro */
+  font-weight: 500;
+}
+
+/* Estilo de los inputs */
+ion-item {
+  --background: #EADCF5; /* lavanda pastel con mejor contraste */
+  border-radius: 10px;
+  margin-bottom: 16px;
+  padding: 6px 12px;
+  --border-color: #D2BCE6;
+  box-shadow: 0 2px 6px rgba(181, 151, 211, 0.15);
+}
+
+/* Etiquetas de los inputs */
+ion-label {
+  color: #5A4E6B; /* lavanda más oscura para mejor visibilidad */
+  font-weight: 600;
+}
+
+/* Texto del input */
+ion-input {
+  --color: #2D2B3A; /* gris oscuro, muy legible */
+  font-weight: 600;
+}
+
+/* Botón guardar */
+ion-button {
+  --background: #AEECEF; /* celeste pastel */
+  --background-activated: #5ED8E6;
+  --color: #0D4A4A; /* azul verdoso oscuro */
+  --border-radius: 10px;
+  font-weight: 700;
+  margin-top: 24px;
+  box-shadow: 0 4px 10px rgba(94, 216, 230, 0.25);
+}
+
+/* Centrado en pantallas grandes */
+@media (min-width: 600px) {
+  ion-content {
+    max-width: 600px;
+    margin: auto;
+  }
+}

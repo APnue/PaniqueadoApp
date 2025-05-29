@@ -1,18 +1,26 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <!-- Menú Lateral -->
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu contentId="main-content" type="overlay" class="pastel-menu">
       <ion-content>
         <ion-list id="inbox-list">
           <ion-list-header>Menú</ion-list-header>
 
-          <!-- Menú dinámico, lo que se cargará se define en el array appPages -->
+          <!-- Menú dinámico, muestra solo si el rol coincide o si no hay restricción -->
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+            <ion-item
+              *ngIf="!p.role || p.role === usuarioRol"
+              routerDirection="root"
+              [routerLink]="[p.url]"
+              lines="none"
+              detail="false"
+              routerLinkActive="selected"
+            >
               <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
         </ion-list>
       </ion-content>
     </ion-menu>

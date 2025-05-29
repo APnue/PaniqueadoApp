@@ -1,0 +1,25 @@
+.contacto-contenido ion-card {
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 3px 12px rgba(111, 82, 237, 0.15);
+  background: #fff;
+  color: #3e3053;
+}
+
+.contacto-contenido ion-card-header {
+  background: #6f52ed;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 12px 20px;
+}
+
+.contacto-contenido ion-card-content {
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #5d4a6e;
+}

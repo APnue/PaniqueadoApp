@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-perfil',
@@ -8,8 +10,11 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./perfil.page.scss'],
   standalone: false
 })
-export class PerfilPage implements OnInit {
+export class PerfilPage {
   fechaActual: Date = new Date();
+
+  estado: 'login' | 'registro' | 'perfil' = 'login';
+  loginCorreo: string = '';
 
   usuario = {
     id: null,
@@ -21,38 +26,89 @@ export class PerfilPage implements OnInit {
 
   apiUrl = 'https://paniqueado.atwebpages.com/api';
 
-  constructor(private http: HttpClient, private toastCtrl: ToastController) { }
-
-  ngOnInit() {
-    // Actualizar fecha/hora cada segundo
+  constructor(private http: HttpClient, private toastCtrl: ToastController, private router: Router, private authService: AuthService) {
     setInterval(() => {
       this.fechaActual = new Date();
     }, 1000);
+  }
 
-    // Cargar usuario si existe id guardado
+  ionViewWillEnter() {
     const id = localStorage.getItem('usuario_id');
     if (id) {
+      this.estado = 'perfil';
       this.cargarUsuario(id);
+    } else {
+      this.estado = 'login';
+      this.usuario = {
+        id: null,
+        nombre: '',
+        correo: '',
+        telefono: '',
+        recibir_notificaciones: false
+      };
+      this.loginCorreo = '';
     }
   }
 
-  // Cargar usuario.
-  cargarUsuario(id: string) {
-  this.http.get(`${this.apiUrl}/consultar_usuario.php?id=${id}`).subscribe({
-    next: (res: any) => {
-      if (res.usuario) {
-        this.usuario = res.usuario;
-        // Asegurar que el checkbox funcione correctamente como booleano
-        this.usuario.recibir_notificaciones = Boolean(Number(res.usuario.recibir_notificaciones));
-      }
-    },
-    error: () => {
-      this.mostrarToast('Error al cargar usuario');
+  cambiarEstado(nuevoEstado: 'login' | 'registro' | 'perfil') {
+    this.estado = nuevoEstado;
+    if (nuevoEstado === 'registro') {
+      this.usuario = {
+        id: null,
+        nombre: '',
+        correo: '',
+        telefono: '',
+        recibir_notificaciones: false
+      };
     }
-  });
+    if (nuevoEstado === 'login') {
+      this.loginCorreo = '';
+    }
+  }
+
+  iniciarSesion() {
+  if (!this.loginCorreo) {
+    this.mostrarToast('Por favor, ingresa tu correo');
+    return;
+  }
+
+  this.http.get(`${this.apiUrl}/buscar_usuario_por_correo.php?correo=${encodeURIComponent(this.loginCorreo)}`)
+    .subscribe({
+      next: (res: any) => {
+        console.log('Respuesta login:', res);
+        if (res.usuario && res.usuario.id) {
+          // Guardar datos de usuario en localStorage
+          localStorage.setItem('usuario_id', res.usuario.id);
+          localStorage.setItem('usuario_rol', res.usuario.rol);  // ← IMPORTANTE
+          this.authService.setRol(res.usuario.rol);
+          this.usuario = res.usuario;
+          this.estado = 'perfil'; // Cambiar a vista perfil
+          this.mostrarToast('Inicio de sesión exitoso');
+        } else {
+          this.mostrarToast('Correo no encontrado, por favor regístrate');
+        }
+      },
+      error: (err) => {
+        console.error('Error login:', err);
+        this.mostrarToast('Error al iniciar sesión');
+      }
+    });
 }
 
-  // Guardar usuario.
+  cargarUsuario(id: string) {
+    this.http.get(`${this.apiUrl}/consultar_usuario.php?id=${id}`).subscribe({
+      next: (res: any) => {
+        if (res.usuario) {
+          this.usuario = res.usuario;
+          this.usuario.recibir_notificaciones = Boolean(Number(res.usuario.recibir_notificaciones));
+        }
+      },
+      error: () => {
+        this.mostrarToast('Error al cargar usuario');
+      }
+    });
+  }
+
   async guardarUsuario() {
     if (!this.usuario.nombre || !this.usuario.correo) {
       this.mostrarToast('Nombre y correo son obligatorios');
@@ -66,13 +122,13 @@ export class PerfilPage implements OnInit {
     }
   }
 
-  // Insertar nuevo usuario.
   insertarUsuario() {
     this.http.post(`${this.apiUrl}/insertar_usuario.php`, this.usuario).subscribe({
       next: (res: any) => {
         this.usuario.id = res.id;
         localStorage.setItem('usuario_id', String(this.usuario.id));
-        this.mostrarToast('Usuario guardado');
+        this.estado = 'perfil';
+        this.mostrarToast('Cuenta creada con éxito');
       },
       error: () => {
         this.mostrarToast('Error al guardar usuario');
@@ -80,7 +136,6 @@ export class PerfilPage implements OnInit {
     });
   }
 
-  // Actualizar datos del usuario.
   actualizarUsuario() {
     this.http.put(`${this.apiUrl}/actualizar_usuario.php`, this.usuario).subscribe({
       next: () => {
@@ -101,31 +156,45 @@ export class PerfilPage implements OnInit {
     toast.present();
   }
 
-
-  // Eliminar al usuario.
   eliminarUsuario() {
-  if (!this.usuario.id) {
-    this.mostrarToast('No hay usuario para eliminar');
-    return;
+    if (!this.usuario.id) {
+      this.mostrarToast('No hay usuario para eliminar');
+      return;
+    }
+
+    if (confirm('¿Estás seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
+      this.http.delete(`${this.apiUrl}/eliminar_usuario.php?id=${this.usuario.id}`).subscribe({
+        next: () => {
+          this.mostrarToast('Usuario eliminado');
+          localStorage.removeItem('usuario_id');
+          this.estado = 'login';
+          this.usuario = {
+            id: null,
+            nombre: '',
+            correo: '',
+            telefono: '',
+            recibir_notificaciones: false
+          };
+        },
+        error: () => {
+          this.mostrarToast('Error al eliminar usuario');
+        }
+      });
+    }
   }
 
-  if (confirm('¿Estás seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
-    this.http.delete(`${this.apiUrl}/eliminar_usuario.php?id=${this.usuario.id}`).subscribe({
-      next: () => {
-        this.mostrarToast('Usuario eliminado');
-        localStorage.removeItem('usuario_id');
-        this.usuario = {
-          id: null,
-          nombre: '',
-          correo: '',
-          telefono: '',
-          recibir_notificaciones: false
-        };
-      },
-      error: () => {
-        this.mostrarToast('Error al eliminar usuario');
-      }
-    });
-  }
+  cerrarSesion() {
+  localStorage.removeItem('usuario_id');
+  this.usuario = {
+    id: null,
+    nombre: '',
+    correo: '',
+    telefono: '',
+    recibir_notificaciones: false
+  };
+  this.estado = 'login';
+  this.mostrarToast('Sesión cerrada');
+  this.router.navigate(['/folder/inbox']);
+  this.authService.clearRol();
 }
 }
