@@ -12,7 +12,6 @@ export class CatalogoPage {
 
   pedido: any[] = [];
   total: number = 0;
-  apiUrl = 'https://paniqueado.atwebpages.com/api';
 
   constructor(private http: HttpClient, private toastCtrl: ToastController) { }
 
@@ -52,7 +51,7 @@ export class CatalogoPage {
       productos: this.pedido
     };
 
-    this.http.post(`${this.apiUrl}/hacer_pedido.php`, datos).subscribe({
+    this.http.post(`https://paniqueado-api.onrender.com/hacer_pedido.php`, datos).subscribe({
       next: () => {
         this.pedido = [];
         this.total = 0;

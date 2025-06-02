@@ -12,7 +12,6 @@ export class ListaDeProductosPage implements OnInit {
   categorias: any[] = [];
   productos: any[] = [];
   categoriaSeleccionada: number | null = null;
-  apiUrl = 'https://paniqueado.atwebpages.com/api';
 
   constructor(private http: HttpClient, private toastCtrl: ToastController) {}
 
@@ -21,7 +20,7 @@ export class ListaDeProductosPage implements OnInit {
   }
 
   obtenerCategorias() {
-    this.http.get<any[]>(`${this.apiUrl}/listar_categorias.php`).subscribe({
+    this.http.get<any[]>(`https://paniqueado-api.onrender.com/api/listar_categorias.php`).subscribe({
       next: (data) => this.categorias = data,
       error: () => this.mostrarToast('Error al cargar categorías')
     });
@@ -29,7 +28,7 @@ export class ListaDeProductosPage implements OnInit {
 
   seleccionarCategoria(idCategoria: number) {
     this.categoriaSeleccionada = idCategoria;
-    this.http.get<any[]>(`${this.apiUrl}/productos_por_categoria.php?id=${idCategoria}`).subscribe({
+    this.http.get<any[]>(`https://paniqueado-api.onrender.com/api/productos_por_categoria.php?id=${idCategoria}`).subscribe({
       next: (data) => this.productos = data,
       error: () => this.mostrarToast('Error al cargar productos')
     });

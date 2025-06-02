@@ -10,7 +10,6 @@ import { ToastController } from '@ionic/angular';
 })
 export class HistorialDePedidosPage implements OnInit {
   pedidos: any[] = [];
-  apiUrl = 'https://paniqueado.atwebpages.com/api';
 
   constructor(private http: HttpClient, private toastCtrl: ToastController) {}
 
@@ -24,7 +23,7 @@ export class HistorialDePedidosPage implements OnInit {
   }
 
   cargarPedidos(id: string) {
-    this.http.get<any[]>(`${this.apiUrl}/historial_pedidos.php?id=${id}`).subscribe({
+    this.http.get<any[]>(`https://paniqueado-api.onrender.com/historial_pedidos.php?id=${id}`).subscribe({
       next: data => {
         this.pedidos = data;
       },

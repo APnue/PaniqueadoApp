@@ -23,7 +23,7 @@ export class EditarProductoPage {
   }
 
   obtenerProductos() {
-    this.http.get<any[]>('https://paniqueado.atwebpages.com/api/get_productos.php')
+    this.http.get<any[]>('https://paniqueado-api.onrender.com/api/get_productos.php')
       .subscribe(data => {
         this.productos = data;
       });
@@ -44,7 +44,7 @@ export class EditarProductoPage {
       id_categoria: this.id_categoria
     };
 
-    this.http.post('https://paniqueado.atwebpages.com/api/update_product.php', data)
+    this.http.post('https://paniqueado-api.onrender.com/api/update_product.php', data)
       .subscribe(async (res: any) => {
         const alert = await this.alertCtrl.create({
           header: res.success ? 'Éxito' : 'Error',
@@ -63,7 +63,7 @@ export class EditarProductoPage {
   event.stopPropagation(); // evita seleccionar el producto al hacer click en borrar
 
   if (confirm('¿Seguro que quieres eliminar este producto?')) {
-    this.http.post('https://paniqueado.atwebpages.com/api/delete_product.php', { id })
+    this.http.post('https://paniqueado-api.onrender.com/api/delete_product.php', { id })
       .subscribe(async (res: any) => {
         if(res.success) {
           alert('Producto eliminado');

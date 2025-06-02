@@ -24,8 +24,6 @@ export class PerfilPage {
     recibir_notificaciones: false
   };
 
-  apiUrl = 'https://paniqueado.atwebpages.com/api';
-
   constructor(private http: HttpClient, private toastCtrl: ToastController, private router: Router, private authService: AuthService) {
     setInterval(() => {
       this.fechaActual = new Date();
@@ -72,7 +70,7 @@ export class PerfilPage {
     return;
   }
 
-  this.http.get(`${this.apiUrl}/buscar_usuario_por_correo.php?correo=${encodeURIComponent(this.loginCorreo)}`)
+  this.http.get(`https://paniqueado-api.onrender.com/api/buscar_usuario_por_correo.php?correo=${encodeURIComponent(this.loginCorreo)}`)
     .subscribe({
       next: (res: any) => {
         console.log('Respuesta login:', res);
@@ -96,7 +94,7 @@ export class PerfilPage {
 }
 
   cargarUsuario(id: string) {
-    this.http.get(`${this.apiUrl}/consultar_usuario.php?id=${id}`).subscribe({
+    this.http.get(`https://paniqueado-api.onrender.com/api/consultar_usuario.php?id=${id}`).subscribe({
       next: (res: any) => {
         if (res.usuario) {
           this.usuario = res.usuario;
@@ -123,7 +121,7 @@ export class PerfilPage {
   }
 
   insertarUsuario() {
-    this.http.post(`${this.apiUrl}/insertar_usuario.php`, this.usuario).subscribe({
+    this.http.post(`https://paniqueado-api.onrender.com/api/insertar_usuario.php`, this.usuario).subscribe({
       next: (res: any) => {
         this.usuario.id = res.id;
         localStorage.setItem('usuario_id', String(this.usuario.id));
@@ -137,7 +135,7 @@ export class PerfilPage {
   }
 
   actualizarUsuario() {
-    this.http.put(`${this.apiUrl}/actualizar_usuario.php`, this.usuario).subscribe({
+    this.http.put(`https://paniqueado-api.onrender.com/api/actualizar_usuario.php`, this.usuario).subscribe({
       next: () => {
         this.mostrarToast('Usuario actualizado');
       },
@@ -163,7 +161,7 @@ export class PerfilPage {
     }
 
     if (confirm('¿Estás seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
-      this.http.delete(`${this.apiUrl}/eliminar_usuario.php?id=${this.usuario.id}`).subscribe({
+      this.http.delete(`https://paniqueado-api.onrender.com/api/eliminar_usuario.php?id=${this.usuario.id}`).subscribe({
         next: () => {
           this.mostrarToast('Usuario eliminado');
           localStorage.removeItem('usuario_id');

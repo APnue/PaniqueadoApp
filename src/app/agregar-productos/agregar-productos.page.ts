@@ -23,7 +23,7 @@ export class AgregarProductoPage {
       id_categoria: this.id_categoria
     };
 
-    this.http.post('https://paniqueado.atwebpages.com/api/insert_product.php', data)
+    this.http.post('https://paniqueado-api.onrender.com/api/insert_product.php', data)
       .subscribe(async (respuesta: any) => {
         if (respuesta.success) {
           const alert = await this.alertCtrl.create({
