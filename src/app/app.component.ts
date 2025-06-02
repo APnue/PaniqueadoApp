@@ -13,6 +13,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Inicio', url: '/folder/inbox', icon: 'home' },
     { title: 'Carrito', url: '/catalogo', icon: 'cart' },
+    { title: 'Catálogo Completo', url: '/catalogo-categorias', icon: 'list' },
     { title: 'Lista de Productos', url: '/lista-de-productos', icon: 'list' },
     { title: 'Historial de Pedidos', url: '/historial-de-pedidos', icon: 'receipt' },
     { title: 'Agregar Productos', url: '/agregar-productos', icon: 'add-circle', role: 'admin' },

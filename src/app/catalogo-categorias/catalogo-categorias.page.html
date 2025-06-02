@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/folder/inbox"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Catálogo con Categorías</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngFor="let prod of productos">
+    <ion-card-header>
+      <ion-card-title>{{ prod.producto_nombre }}</ion-card-title>
+      <ion-card-subtitle>Categoría: {{ prod.categoria_nombre }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Precio: ${{ prod.precio }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

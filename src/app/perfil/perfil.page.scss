@@ -1,86 +1,61 @@
-/* Fondo general y padding para el contenido */
+/* Fondo general */
 ion-content {
-  --background: #f9f6f3; /* un tono claro y cálido */
-  padding: 16px;
-  color: #4a3a3a;
+  --background: #f9f6f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
 }
 
-/* Estilo para el card con fecha y hora */
-ion-card {
-  border-radius: 15px;
-  box-shadow: 0 3px 10px rgba(62, 48, 83, 0.15);
-  margin-bottom: 20px;
-  background: #fff;
-  color: #3e3053;
+/* Contenedor del formulario */
+.formulario {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(111, 82, 237, 0.2);
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* más separación entre campos */
 }
 
-ion-card-header {
-  background: #6f52ed;
-  color: white;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  padding: 12px 20px;
-  font-weight: 700;
-  font-size: 18px;
+/* Estilo visual de los campos */
+ion-item {
+  --background: #f3f0ff; /* color suave lila */
+  border-radius: 12px;
+  box-shadow: none;
+  border: 1px solid #ccc;
+  margin-bottom: 4px;
+  padding-inline: 10px;
 }
 
-ion-card-content {
-  padding: 16px 20px;
-  font-size: 16px;
+/* Label del campo */
+ion-label {
+  color: #6f52ed;
   font-weight: 500;
 }
 
-/* Formulario */
-form ion-item {
-  --background: #fff;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 1px 5px rgba(62, 48, 83, 0.1);
-}
-
-/* Labels flotantes con color personalizado */
-ion-label {
-  color: #6f52ed;
-  font-weight: 600;
-}
-
-/* Inputs con borde redondeado */
+/* Input editable */
 ion-input {
-  --padding-start: 12px;
-  --background: #fafafa;
-  border-radius: 10px;
-  border: 1px solid #dcd9f7;
+  --padding-start: 10px;
+  font-size: 16px;
+  --background: transparent;
+  --highlight-color-focused: #6f52ed; /* color del cursor y borde enfocado */
+  color: #333;
 }
 
-/* Checkbox personalizado */
-ion-checkbox {
+/* Botón de guardar */
+ion-button {
   --background: #6f52ed;
-  --border-radius: 6px;
-}
-
-/* Botón Guardar */
-ion-button[type="submit"] {
-  --background: #6f52ed;
-  --box-shadow: 0 4px 14px rgba(111, 82, 237, 0.5);
-  font-weight: 700;
-  font-size: 17px;
-}
-
-/* Botón Eliminar */
-ion-button[color="danger"] {
-  margin-top: 10px;
-  font-weight: 700;
-  font-size: 17px;
-  --background: #e74c3c;
-  --box-shadow: 0 4px 14px rgba(231, 76, 60, 0.5);
+  font-weight: 600;
+  font-size: 16px;
   border-radius: 12px;
+  margin-top: 12px;
 }
 
-/* Responsive: más espacio en pantallas grandes */
-@media (min-width: 600px) {
-  ion-content {
-    max-width: 600px;
-    margin: auto;
-  }
+ion-item.ion-focused {
+  border: 2px solid #6f52ed;
 }

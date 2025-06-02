@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-de-productos',
@@ -13,7 +14,7 @@ export class ListaDeProductosPage implements OnInit {
   productos: any[] = [];
   categoriaSeleccionada: number | null = null;
 
-  constructor(private http: HttpClient, private toastCtrl: ToastController) {}
+  constructor(private http: HttpClient, private toastCtrl: ToastController, private router: Router) {}
 
   ngOnInit() {
     this.obtenerCategorias();
@@ -35,6 +36,13 @@ export class ListaDeProductosPage implements OnInit {
   }
 
   agregarAlCarrito(producto: any) {
+    const usuarioId = localStorage.getItem('usuario_id');
+    if (!usuarioId) {
+      this.mostrarToast('Debes registrarte antes de agregar productos');
+      this.router.navigate(['/perfil']);
+      return;
+    }
+
     let carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
 
     const index = carrito.findIndex((p: any) => p.id === producto.id);

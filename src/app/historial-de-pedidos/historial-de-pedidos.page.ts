@@ -23,7 +23,7 @@ export class HistorialDePedidosPage implements OnInit {
   }
 
   cargarPedidos(id: string) {
-    this.http.get<any[]>(`https://paniqueado-api.onrender.com/historial_pedidos.php?id=${id}`).subscribe({
+    this.http.get<any[]>(`https://paniqueado-api.onrender.com/api/historial_pedidos.php?id=${id}`).subscribe({
       next: data => {
         this.pedidos = data;
       },

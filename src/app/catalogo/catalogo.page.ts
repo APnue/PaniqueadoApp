@@ -51,7 +51,7 @@ export class CatalogoPage {
       productos: this.pedido
     };
 
-    this.http.post(`https://paniqueado-api.onrender.com/hacer_pedido.php`, datos).subscribe({
+    this.http.post(`https://paniqueado-api.onrender.com/api/hacer_pedido.php`, datos).subscribe({
       next: () => {
         this.pedido = [];
         this.total = 0;
